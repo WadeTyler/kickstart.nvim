@@ -171,6 +171,15 @@ vim.o.confirm = true
 -- vim.o.shiftwidth = 4
 -- vim.o.expandtab = false -- use actual tabs instead of spaces
 
+-- Set the termguicolors to be on
+vim.o.termguicolors = true
+
+-- Set keybinds for buffers
+vim.keymap.set('n', '<S-l>', '<cmd>:bnext<CR>', { desc = 'Go to next buffer' })
+vim.keymap.set('n', '<S-h>', '<cmd>:bprevious<CR>', { desc = 'Go to previous buffer' })
+vim.keymap.set('n', '<leader>bd', '<cmd>:bdelete<CR>', { desc = 'Delete current buffer' })
+vim.keymap.set('n', '<leader>bD', '<cmd>:bufdo bdelete<CR>', { desc = 'Delete all buffers' })
+
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 

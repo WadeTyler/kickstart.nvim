@@ -23,4 +23,24 @@ return {
       }
     end,
   },
+  { -- Buffer line plugin for Neovim
+    'akinsho/bufferline.nvim',
+    opts = {
+      options = {
+        color_icons = true,
+        show_tab_indicators = true,
+        separator_style = 'slope',
+        always_show_bufferline = true,
+        offsets = {
+          {
+            filetype = 'neo-tree',
+            text = 'File Explorer',
+            highlight = 'Directory',
+            text_align = 'left',
+            separator = true,
+          },
+        },
+      },
+    },
+  },
 }

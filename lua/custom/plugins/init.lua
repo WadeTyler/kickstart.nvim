@@ -29,7 +29,7 @@ return {
       options = {
         color_icons = true,
         show_tab_indicators = true,
-        separator_style = 'slope',
+        separator_style = 'slant',
         always_show_bufferline = true,
         offsets = {
           {

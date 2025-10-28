@@ -177,8 +177,21 @@ vim.o.termguicolors = true
 -- Set keybinds for buffers
 vim.keymap.set('n', '<S-l>', '<cmd>:bnext<CR>', { desc = 'Go to next buffer' })
 vim.keymap.set('n', '<S-h>', '<cmd>:bprevious<CR>', { desc = 'Go to previous buffer' })
-vim.keymap.set('n', '<leader>bd', '<cmd>:bdelete<CR>', { desc = 'Delete current buffer' })
-vim.keymap.set('n', '<leader>bD', '<cmd>:bufdo bdelete<CR>', { desc = 'Delete all buffers' })
+vim.keymap.set('n', '<leader>bd', function()
+  require('mini.bufremove').delete(0, false)
+end, { desc = 'Delete current buffer' })
+
+vim.keymap.set('n', '<leader>bD', function()
+  local buffers = vim.fn.getbufinfo { buflisted = 1 }
+
+  -- Create a new empty buffer first
+  vim.cmd 'enew'
+
+  -- Delete all old buffers
+  for _, buf in ipairs(buffers) do
+    require('mini.bufremove').delete(buf.bufnr, false)
+  end
+end, { desc = 'Delete all buffers' })
 
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
@@ -769,6 +782,7 @@ require('lazy').setup({
         'bashls',
         'beautysh',
         'shfmt',
+        'markdownlint',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -973,6 +987,8 @@ require('lazy').setup({
       --  - yinq - [Y]ank [I]nside [N]ext [Q]uote
       --  - ci'  - [C]ange [I]nside [']quote
       require('mini.ai').setup { n_lines = 500 }
+
+      require('mini.bufremove').setup()
 
       -- Add/delete/replace surroundings (brackets, quotes, etc.)
       --

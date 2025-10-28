@@ -696,8 +696,12 @@ require('lazy').setup({
         html = {},
         ast_grep = {},
         ts_ls = {},
+        docker_compose_language_service = {},
+        dockerls = {},
+        yamlls = {},
+        postgrestools = {},
         -- gopls = {},
-        -- pyright = {},
+        pyright = {},
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
@@ -753,6 +757,14 @@ require('lazy').setup({
         'stylua',
         'ts_ls',
         'xmlformatter',
+        'docker_compose_language_service',
+        'dockerls',
+        'yamlls',
+        'postgrestools',
+        'pgformatter',
+        'pyright',
+        'isort',
+        'black',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -805,12 +817,16 @@ require('lazy').setup({
       end,
       formatters_by_ft = {
         lua = { 'stylua' },
+        h = { 'clang-format' },
         cpp = { 'clang-format' },
+        c = { 'clang-format' },
         java = { 'clang-format' },
         xml = { 'xmlformatter' },
         json = { 'prettier' },
+        yaml = { 'prettier' },
+        sql = { 'pgformatter' },
         -- Conform can also run multiple formatters sequentially
-        -- python = { "isort", "black" },
+        python = { 'isort', 'black' },
         --
         -- You can use 'stop_after_first' to run the first available formatter from the list
         javascript = { 'prettierd', 'prettier', stop_after_first = true },

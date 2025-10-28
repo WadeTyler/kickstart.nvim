@@ -6,7 +6,7 @@ return {
   { -- A task runner and job management plugin for Neovim
     'stevearc/overseer.nvim',
     opts = {
-      templates = { 'builtin', 'mvn.spring-boot-run' },
+      templates = { 'builtin' },
     },
   },
   { -- GitHub Copilot plugin for Neovim

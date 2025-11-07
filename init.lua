@@ -193,6 +193,10 @@ vim.keymap.set('n', '<leader>bD', function()
   end
 end, { desc = 'Delete all buffers' })
 
+-- Overseer Keymaps
+vim.keymap.set('n', '<leader>or', '<cmd>:OverseerRun<CR>', { desc = 'Run with Overseer' })
+vim.keymap.set('n', '<leader>ot', '<cmd>:OverseerToggle<CR>', { desc = 'Toggle Overseer' })
+
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 

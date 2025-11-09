@@ -20,6 +20,14 @@ return {
           auto_trigger = true,
         },
         panel = { enabled = true },
+
+        sh = function()
+          if string.match(vim.fs.basename(vim.api.nvim_buf_get_name(0)), '^%.env.*') then
+            -- disable for .env files
+            return false
+          end
+          return true
+        end,
       }
     end,
   },
@@ -42,5 +50,12 @@ return {
         },
       },
     },
+  },
+  { -- Plugin to improve viewing Markdown files in Neovim
+    'MeanderingProgrammer/render-markdown.nvim',
+    dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-mini/mini.nvim' },
+    ---@module 'render-markdown'
+    ---@type render.md.UserConfig
+    opts = {},
   },
 }
